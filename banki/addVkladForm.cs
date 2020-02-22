@@ -12,7 +12,7 @@ namespace banki
 {
     public partial class addVkladForm : Form
     {
-        DataTable table_vkladi, table_users;
+        DataTable  table_users;
         public addVkladForm()
         {
             InitializeComponent();

@@ -23,16 +23,19 @@ namespace banki
             userId = Convert.ToInt32(row["userId"]);
             vkladSum = Convert.ToDouble(row["vklad_sum"]);
             date_vlozh = Convert.ToDateTime(row["date_vlozh"]);
-            //vklHave = new dbVklHave(row);
-            //users = new dbUsers(row);
         }
 
-        public static List<dbVkladi> select()
+        public static List<dbVkladi> select(string filter)
         {
             DataTable table = new DataTable();
             if (dbUsers.localuser.role_user == (int)dbUsers.roles.admin)
             {
-                db.init().select("SELECT * FROM  `users` ,  `vkladi` ,  `vkladi_have` WHERE  `vkladi`.`depId` =  `vkladi_have`.`depositid` AND  `vkladi`.`userId` =  `users`.`id_user`", new List<parami> { }, out table);
+                if(filter == "")
+                    db.init().select("SELECT * FROM  `users` ,  `vkladi` ,  `vkladi_have` WHERE  `vkladi`.`depId` =  `vkladi_have`.`depositid` AND  `vkladi`.`userId` =  `users`.`id_user`", new List<parami> { }, out table);
+                else
+                {
+                    db.init().select("SELECT * FROM  `users` ,  `vkladi` ,  `vkladi_have` WHERE  `vkladi`.`depId` =  `vkladi_have`.`depositid` AND  `vkladi`.`userId` =  `users`.`id_user` AND `login` LIKE @filter", new List<parami> { new parami("@filter", "%" + filter + "%") }, out table);
+                }
             }
             else if (dbUsers.localuser.role_user == (int)dbUsers.roles.user)
             {

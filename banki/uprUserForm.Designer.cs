@@ -37,6 +37,8 @@
             this.but_addUser = new System.Windows.Forms.Button();
             this.but_editUser = new System.Windows.Forms.Button();
             this.but_delUser = new System.Windows.Forms.Button();
+            this.poiskFie = new System.Windows.Forms.TextBox();
+            this.but_poisk = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,11 +123,30 @@
             this.but_delUser.UseVisualStyleBackColor = true;
             this.but_delUser.Click += new System.EventHandler(this.but_delUser_Click);
             // 
+            // poiskFie
+            // 
+            this.poiskFie.Location = new System.Drawing.Point(12, 450);
+            this.poiskFie.Name = "poiskFie";
+            this.poiskFie.Size = new System.Drawing.Size(210, 20);
+            this.poiskFie.TabIndex = 5;
+            // 
+            // but_poisk
+            // 
+            this.but_poisk.Location = new System.Drawing.Point(234, 448);
+            this.but_poisk.Name = "but_poisk";
+            this.but_poisk.Size = new System.Drawing.Size(75, 23);
+            this.but_poisk.TabIndex = 6;
+            this.but_poisk.Text = "Найти";
+            this.but_poisk.UseVisualStyleBackColor = true;
+            this.but_poisk.Click += new System.EventHandler(this.but_poisk_Click);
+            // 
             // uprUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 443);
+            this.ClientSize = new System.Drawing.Size(677, 482);
+            this.Controls.Add(this.but_poisk);
+            this.Controls.Add(this.poiskFie);
             this.Controls.Add(this.but_delUser);
             this.Controls.Add(this.but_editUser);
             this.Controls.Add(this.but_addUser);
@@ -134,6 +155,7 @@
             this.Text = "Управление пользователями";
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -148,5 +170,7 @@
         private System.Windows.Forms.Button but_addUser;
         private System.Windows.Forms.Button but_editUser;
         private System.Windows.Forms.Button but_delUser;
+        private System.Windows.Forms.TextBox poiskFie;
+        private System.Windows.Forms.Button but_poisk;
     }
 }

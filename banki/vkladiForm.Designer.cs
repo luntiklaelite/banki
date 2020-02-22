@@ -28,55 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.but_infoUser = new System.Windows.Forms.Button();
-            this.but_infoDep = new System.Windows.Forms.Button();
+            this.grid_vkladi = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.but_infoUser = new System.Windows.Forms.Button();
+            this.but_infoDep = new System.Windows.Forms.Button();
+            this.poiskFie = new System.Windows.Forms.TextBox();
+            this.but_poisk = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_vkladi)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // grid_vkladi
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grid_vkladi.AllowUserToAddRows = false;
+            this.grid_vkladi.AllowUserToDeleteRows = false;
+            this.grid_vkladi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid_vkladi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(603, 387);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // but_infoUser
-            // 
-            this.but_infoUser.Location = new System.Drawing.Point(12, 405);
-            this.but_infoUser.Name = "but_infoUser";
-            this.but_infoUser.Size = new System.Drawing.Size(214, 52);
-            this.but_infoUser.TabIndex = 1;
-            this.but_infoUser.Text = "Информация о пользователе";
-            this.but_infoUser.UseVisualStyleBackColor = true;
-            this.but_infoUser.Click += new System.EventHandler(this.but_infoUser_Click);
-            // 
-            // but_infoDep
-            // 
-            this.but_infoDep.Location = new System.Drawing.Point(401, 405);
-            this.but_infoDep.Name = "but_infoDep";
-            this.but_infoDep.Size = new System.Drawing.Size(214, 52);
-            this.but_infoDep.TabIndex = 2;
-            this.but_infoDep.Text = "Информация о выбранном депозите";
-            this.but_infoDep.UseVisualStyleBackColor = true;
-            this.but_infoDep.Click += new System.EventHandler(this.but_infoDep_Click);
+            this.grid_vkladi.Location = new System.Drawing.Point(12, 12);
+            this.grid_vkladi.MultiSelect = false;
+            this.grid_vkladi.Name = "grid_vkladi";
+            this.grid_vkladi.ReadOnly = true;
+            this.grid_vkladi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grid_vkladi.Size = new System.Drawing.Size(603, 387);
+            this.grid_vkladi.TabIndex = 0;
             // 
             // Column1
             // 
@@ -110,24 +92,64 @@
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
+            // but_infoUser
+            // 
+            this.but_infoUser.Location = new System.Drawing.Point(12, 405);
+            this.but_infoUser.Name = "but_infoUser";
+            this.but_infoUser.Size = new System.Drawing.Size(214, 52);
+            this.but_infoUser.TabIndex = 1;
+            this.but_infoUser.Text = "Информация о пользователе";
+            this.but_infoUser.UseVisualStyleBackColor = true;
+            this.but_infoUser.Click += new System.EventHandler(this.but_infoUser_Click);
+            // 
+            // but_infoDep
+            // 
+            this.but_infoDep.Location = new System.Drawing.Point(401, 405);
+            this.but_infoDep.Name = "but_infoDep";
+            this.but_infoDep.Size = new System.Drawing.Size(214, 52);
+            this.but_infoDep.TabIndex = 2;
+            this.but_infoDep.Text = "Информация о выбранном депозите";
+            this.but_infoDep.UseVisualStyleBackColor = true;
+            this.but_infoDep.Click += new System.EventHandler(this.but_infoDep_Click);
+            // 
+            // poiskFie
+            // 
+            this.poiskFie.Location = new System.Drawing.Point(232, 405);
+            this.poiskFie.Name = "poiskFie";
+            this.poiskFie.Size = new System.Drawing.Size(163, 20);
+            this.poiskFie.TabIndex = 3;
+            // 
+            // but_poisk
+            // 
+            this.but_poisk.Location = new System.Drawing.Point(232, 434);
+            this.but_poisk.Name = "but_poisk";
+            this.but_poisk.Size = new System.Drawing.Size(163, 23);
+            this.but_poisk.TabIndex = 4;
+            this.but_poisk.Text = "Найти";
+            this.but_poisk.UseVisualStyleBackColor = true;
+            this.but_poisk.Click += new System.EventHandler(this.button1_Click);
+            // 
             // vkladiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 469);
+            this.Controls.Add(this.but_poisk);
+            this.Controls.Add(this.poiskFie);
             this.Controls.Add(this.but_infoDep);
             this.Controls.Add(this.but_infoUser);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.grid_vkladi);
             this.Name = "vkladiForm";
             this.Text = "Список вкладов";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid_vkladi)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView grid_vkladi;
         private System.Windows.Forms.Button but_infoUser;
         private System.Windows.Forms.Button but_infoDep;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -135,5 +157,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.TextBox poiskFie;
+        private System.Windows.Forms.Button but_poisk;
     }
 }

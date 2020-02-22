@@ -43,19 +43,35 @@ namespace banki
             date = Convert.ToDateTime(row["datebirth"]);
         }
 
-        public static List<dbUsers> select()
+        public static List<dbUsers> select(string filter)
         {
             List<dbUsers> list = new List<dbUsers>();
             DataTable table = new DataTable();
-            if(db.init().select("SELECT * FROM `users`", new List<parami>(), out table))
+            if (filter == "")
             {
-                if (!error.checkTable(table))
-                    return null;
-                foreach(DataRow row in table.Rows)
+                if (db.init().select("SELECT * FROM `users`", new List<parami>(), out table))
                 {
-                    list.Add(new dbUsers(row));
+                    if (!error.checkTable(table))
+                        return null;
+                    foreach (DataRow row in table.Rows)
+                    {
+                        list.Add(new dbUsers(row));
+                    }
+                    return list;
                 }
-                return list;
+            }
+            else
+            {
+                if (db.init().select("SELECT * FROM `users` WHERE `login` LIKE @filter OR `fio` LIKE @filter", new List<parami> { new parami("@filter", "%" + filter + "%") }, out table))
+                {
+                    if (!error.checkTable(table))
+                        return null;
+                    foreach (DataRow row in table.Rows)
+                    {
+                        list.Add(new dbUsers(row));
+                    }
+                    return list;
+                }
             }
             return null;
         }

@@ -15,7 +15,7 @@ namespace banki
         public uprUserForm()
         {
             InitializeComponent();
-            List<dbUsers> list = dbUsers.select();
+            List<dbUsers> list = dbUsers.select("");
             foreach (dbUsers users in list)
             {
                 int r = gridUsers.Rows.Add(users.id_user, users.login, users.fio_user, users.date.ToLongDateString(), dbUsers.getRoleUser(users));
@@ -56,6 +56,17 @@ namespace banki
                 Hide();
                 uprUserForm form1 = new uprUserForm();
                 form1.Show();
+            }
+        }
+
+        private void but_poisk_Click(object sender, EventArgs e)
+        {
+            gridUsers.Rows.Clear();
+            List<dbUsers> list = dbUsers.select(poiskFie.Text);
+            foreach (dbUsers users in list)
+            {
+                int r = gridUsers.Rows.Add(users.id_user, users.login, users.fio_user, users.date.ToLongDateString(), dbUsers.getRoleUser(users));
+                gridUsers.Rows[r].Tag = users;
             }
         }
     }
