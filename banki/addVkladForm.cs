@@ -37,12 +37,21 @@ namespace banki
 
         private void but_addVklad_Click(object sender, EventArgs e)
         {
-            //int vklad_id = Convert.ToInt32(combo_vkladi.Items[0].ToString());
-            //MessageBox.Show(combo_vkladi.Items[0].ToString());
-            MessageBox.Show(combo_vkladi.SelectedItem.ToString());
-            return;
-            //int user_id = Convert.ToInt32(table_users.Rows[combo_users.SelectedIndex]["id_user"]);
-           // db.init().exec("INSERT INTO `vkladi` (`depId`, `userId`, `vklad_sum`) VALUES (@depId, @userId, @vklad_sum);", new List<parami> { new parami("@depId",vklad_id), new parami("@userId",user_id), new parami("@vklad_sum",summFie.Text) } );
+            double summ;
+            if(combo_vkladi.SelectedIndex <= -1 || combo_users.SelectedIndex <= -1 || summFie.Text == "" || !double.TryParse(summFie.Text, out summ))
+                return;
+            int vklad_id = Convert.ToInt32(((dbVklHave)combo_vkladi.SelectedItem).depositid);
+            int user_id = Convert.ToInt32(table_users.Rows[combo_users.SelectedIndex]["id_user"]);
+            if(db.init().exec("INSERT INTO `vkladi` (`depId`, `userId`, `vklad_sum`, `date_vlozh`) VALUES (@depId, @userId, @vklad_sum, @date);", new List<parami> { new parami("@depId",vklad_id), new parami("@userId",user_id), new parami("@vklad_sum",summ), new parami("@date",DateTime.Now.ToString("yyyy-MM-dd")) } ))
+            {
+                MessageBox.Show("Успешно!");
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка с добавлением строки в базу данных!");
+                return;
+            }
         }
     }
 }

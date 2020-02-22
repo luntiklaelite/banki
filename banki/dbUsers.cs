@@ -22,13 +22,13 @@ namespace banki
             manager = 2
         }
 
-        public static string getlocaluserRole()
+        public static string getRoleUser(dbUsers user1)
         {
-            if (localuser.role_user == (int)roles.admin)
+            if (user1.role_user == (int)roles.admin)
                 return "Администратор";
-            if (localuser.role_user == (int)roles.user)
+            if (user1.role_user == (int)roles.user)
                 return "Пользователь";
-            if (localuser.role_user == (int)roles.manager)
+            if (user1.role_user == (int)roles.manager)
                 return "Сотрудник банка";
             return "Неизвестная";
         }
@@ -41,6 +41,23 @@ namespace banki
             pass = Convert.ToString(row["pass"]);
             fio_user = Convert.ToString(row["fio"]);
             date = Convert.ToDateTime(row["datebirth"]);
+        }
+
+        public static List<dbUsers> select()
+        {
+            List<dbUsers> list = new List<dbUsers>();
+            DataTable table = new DataTable();
+            if(db.init().select("SELECT * FROM `users`", new List<parami>(), out table))
+            {
+                if (!error.checkTable(table))
+                    return null;
+                foreach(DataRow row in table.Rows)
+                {
+                    list.Add(new dbUsers(row));
+                }
+                return list;
+            }
+            return null;
         }
     }
 }

@@ -17,3 +17,7 @@ C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.exe
 C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.pdb
 C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.addVkladForm.resources
 C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.vkladiForm.resources
+C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.uprUserForm.resources
+C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.csprojAssemblyReference.cache
+C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.userForms.addUserForm.resources
+C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.userForms.editUserForm.resources

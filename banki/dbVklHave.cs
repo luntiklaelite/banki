@@ -24,7 +24,7 @@ namespace banki
 
         public override string ToString()
         {
-            return Convert.ToString(depositid);
+            return depName;
 
         }
 
