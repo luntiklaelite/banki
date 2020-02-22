@@ -113,7 +113,7 @@
             this.Controls.Add(this.combo_vkladi);
             this.Controls.Add(this.combo_users);
             this.Name = "addVkladForm";
-            this.Text = "addVkladForm";
+            this.Text = "Добавить вклад";
             this.ResumeLayout(false);
             this.PerformLayout();
 

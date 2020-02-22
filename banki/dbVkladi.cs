@@ -12,7 +12,8 @@ namespace banki
         public dbVklHave vklHave;
         public dbUsers users;
 
-        public int vklad_id, depId, userId, vkladSum;
+        public int vklad_id, depId, userId;
+        public double vkladSum;
         public DateTime date_vlozh;
 
         public dbVkladi(DataRow row)
@@ -20,7 +21,7 @@ namespace banki
             vklad_id = Convert.ToInt32(row["vklad_id"]);
             depId = Convert.ToInt32(row["depId"]);
             userId = Convert.ToInt32(row["userId"]);
-            vkladSum = Convert.ToInt32(row["vklad_sum"]);
+            vkladSum = Convert.ToDouble(row["vklad_sum"]);
             date_vlozh = Convert.ToDateTime(row["date_vlozh"]);
             //vklHave = new dbVklHave(row);
             //users = new dbUsers(row);

@@ -22,5 +22,26 @@ namespace banki
             depDescr = Convert.ToString(row["depDescr"]);
         }
 
+        public override string ToString()
+        {
+            return Convert.ToString(depositid);
+
+        }
+
+        public static List<dbVklHave> select()
+        {
+            List<dbVklHave> list = new List<dbVklHave>();
+            DataTable table = new DataTable();
+
+            db.init().select("SELECT * FROM `vkladi_have`", new List<parami>(), out table);
+            if (!error.checkTable(table))
+                return null;
+            foreach(DataRow row in table.Rows)
+            {
+                list.Add(new dbVklHave(row));
+            }
+            return list;
+        }
+
     }
 }
