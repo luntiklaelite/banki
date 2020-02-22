@@ -47,5 +47,11 @@ namespace banki
             addVkladForm form = new addVkladForm();
             form.Show();
         }
+
+        private void but_vkladi_Click(object sender, EventArgs e)
+        {
+            vkladiForm form = new vkladiForm();
+            form.Show();
+        }
     }
 }

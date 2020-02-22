@@ -51,6 +51,7 @@
             this.but_vkladi.TabIndex = 1;
             this.but_vkladi.Text = "Посмотреть вклады";
             this.but_vkladi.UseVisualStyleBackColor = true;
+            this.but_vkladi.Click += new System.EventHandler(this.but_vkladi_Click);
             // 
             // but_addVklad
             // 

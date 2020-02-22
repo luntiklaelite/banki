@@ -73,6 +73,12 @@
     <Compile Include="parami.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="vkladiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vkladiForm.Designer.cs">
+      <DependentUpon>vkladiForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="addVkladForm.resx">
       <DependentUpon>addVkladForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +97,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vkladiForm.resx">
+      <DependentUpon>vkladiForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
