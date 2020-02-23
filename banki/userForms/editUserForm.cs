@@ -22,7 +22,7 @@ namespace banki.userForms
             dateFie.Value = user.date;
             loginFie.Text = user.login;
             fioFie.Text = user.fio_user;
-            combo_role.SelectedIndex = user.role_user;
+            combo_role.SelectedIndex = (int)user.role_user;
             this.user = user;
         }
 
@@ -36,7 +36,7 @@ namespace banki.userForms
             role = combo_role.SelectedIndex;
             
             if (combo_role.SelectedIndex <= -1)
-                role = user.role_user;
+                role = (int)user.role_user;
             if (loginFie.Text == "")
                 login = user.login;
             if (passFie.Text == "")

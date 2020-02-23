@@ -9,8 +9,9 @@ namespace banki
 {
     public class dbUsers
     {
-        public int id_user, role_user;
+        public int id_user;
         public string login, pass, fio_user;
+        public roles role_user;
         public DateTime date;
 
         public static dbUsers localuser;
@@ -24,11 +25,11 @@ namespace banki
 
         public static string getRoleUser(dbUsers user1)
         {
-            if (user1.role_user == (int)roles.admin)
+            if (user1.role_user == roles.admin)
                 return "Администратор";
-            if (user1.role_user == (int)roles.user)
+            if (user1.role_user == roles.user)
                 return "Пользователь";
-            if (user1.role_user == (int)roles.manager)
+            if (user1.role_user == roles.manager)
                 return "Сотрудник банка";
             return "Неизвестная";
         }
@@ -36,7 +37,7 @@ namespace banki
         public dbUsers(DataRow row)
         {
             id_user = Convert.ToInt32(row["id_user"]);
-            role_user = Convert.ToInt32(row["role"]);
+            role_user = (roles)Convert.ToInt32(row["role"]);
             login = Convert.ToString(row["login"]);
             pass = Convert.ToString(row["pass"]);
             fio_user = Convert.ToString(row["fio"]);

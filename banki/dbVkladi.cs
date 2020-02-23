@@ -12,7 +12,7 @@ namespace banki
         public dbVklHave vklHave;
         public dbUsers users;
 
-        public int vklad_id, depId, userId;
+        public int vklad_id, depId, userId, vidan;
         public double vkladSum;
         public DateTime date_vlozh;
 
@@ -23,12 +23,13 @@ namespace banki
             userId = Convert.ToInt32(row["userId"]);
             vkladSum = Convert.ToDouble(row["vklad_sum"]);
             date_vlozh = Convert.ToDateTime(row["date_vlozh"]);
+            vidan = Convert.ToInt32(row["vidan"]);
         }
 
         public static List<dbVkladi> select(string filter)
         {
             DataTable table = new DataTable();
-            if (dbUsers.localuser.role_user == (int)dbUsers.roles.admin)
+            if (dbUsers.localuser.role_user == dbUsers.roles.admin)
             {
                 if(filter == "")
                     db.init().select("SELECT * FROM  `users` ,  `vkladi` ,  `vkladi_have` WHERE  `vkladi`.`depId` =  `vkladi_have`.`depositid` AND  `vkladi`.`userId` =  `users`.`id_user`", new List<parami> { }, out table);
@@ -37,7 +38,7 @@ namespace banki
                     db.init().select("SELECT * FROM  `users` ,  `vkladi` ,  `vkladi_have` WHERE  `vkladi`.`depId` =  `vkladi_have`.`depositid` AND  `vkladi`.`userId` =  `users`.`id_user` AND `login` LIKE @filter", new List<parami> { new parami("@filter", "%" + filter + "%") }, out table);
                 }
             }
-            else if (dbUsers.localuser.role_user == (int)dbUsers.roles.user)
+            else if (dbUsers.localuser.role_user == dbUsers.roles.user)
             {
                 db.init().select("SELECT * FROM  `users` ,  `vkladi` ,  `vkladi_have` WHERE  `vkladi`.`depId` =  `vkladi_have`.`depositid` AND  `vkladi`.`userId` =  `users`.`id_user` AND `vkladi`.`userId` = @id", new List<parami> { new parami("@id", dbUsers.localuser.id_user) }, out table);
             }

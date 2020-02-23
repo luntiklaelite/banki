@@ -38,6 +38,7 @@
             this.but_infoDep = new System.Windows.Forms.Button();
             this.poiskFie = new System.Windows.Forms.TextBox();
             this.but_poisk = new System.Windows.Forms.Button();
+            this.but_vidan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grid_vkladi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,11 +130,22 @@
             this.but_poisk.UseVisualStyleBackColor = true;
             this.but_poisk.Click += new System.EventHandler(this.button1_Click);
             // 
+            // but_vidan
+            // 
+            this.but_vidan.Location = new System.Drawing.Point(12, 463);
+            this.but_vidan.Name = "but_vidan";
+            this.but_vidan.Size = new System.Drawing.Size(603, 23);
+            this.but_vidan.TabIndex = 5;
+            this.but_vidan.Text = "Пометить, что вклад выдан";
+            this.but_vidan.UseVisualStyleBackColor = true;
+            this.but_vidan.Click += new System.EventHandler(this.but_vidan_Click);
+            // 
             // vkladiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 469);
+            this.ClientSize = new System.Drawing.Size(627, 494);
+            this.Controls.Add(this.but_vidan);
             this.Controls.Add(this.but_poisk);
             this.Controls.Add(this.poiskFie);
             this.Controls.Add(this.but_infoDep);
@@ -159,5 +171,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.TextBox poiskFie;
         private System.Windows.Forms.Button but_poisk;
+        private System.Windows.Forms.Button but_vidan;
     }
 }

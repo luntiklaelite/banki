@@ -16,16 +16,16 @@ namespace banki
         {
             InitializeComponent();
             privetLabel.Text = "Здравствуйте,\n" + dbUsers.localuser.fio_user + "\nВаша роль в системе: " + dbUsers.getRoleUser(dbUsers.localuser);
-            if(dbUsers.localuser.role_user == (int)dbUsers.roles.manager)
+            if(dbUsers.localuser.role_user == dbUsers.roles.manager)
             {
                 but_vkladi.Visible = false;
                 but_addVklad.Location = but_vkladi.Location;
                 but_goUprUser.Visible = false;
             }
-            else if(dbUsers.localuser.role_user == (int)dbUsers.roles.admin)
+            else if(dbUsers.localuser.role_user == dbUsers.roles.admin)
             {
             }
-            else if(dbUsers.localuser.role_user == (int)dbUsers.roles.user)
+            else if(dbUsers.localuser.role_user == dbUsers.roles.user)
             {
                 but_addVklad.Visible = false;
                 but_goUprUser.Visible = false;
