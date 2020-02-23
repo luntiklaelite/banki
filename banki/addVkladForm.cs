@@ -12,11 +12,9 @@ namespace banki
 {
     public partial class addVkladForm : Form
     {
-        DataTable  table_users;
         public addVkladForm()
         {
             InitializeComponent();
-            table_users = new DataTable();
 
             List<dbVklHave> list = dbVklHave.select();
             foreach(dbVklHave vklHave in list)
@@ -40,7 +38,7 @@ namespace banki
                 return;
             int vklad_id = Convert.ToInt32(((dbVklHave)combo_vkladi.SelectedItem).depositid);
             int user_id = Convert.ToInt32(((dbUsers)combo_users.SelectedItem).id_user);
-            if(db.init().exec("INSERT INTO `vkladi` (`depId`, `userId`, `vklad_sum`, `date_vlozh`) VALUES (@depId, @userId, @vklad_sum, @date);", new List<parami> { new parami("@depId",vklad_id), new parami("@userId",user_id), new parami("@vklad_sum",summ), new parami("@date",DateTime.Now.ToString("yyyy-MM-dd")) } ))
+            if(dbVkladi.addVklad(vklad_id, user_id, summ))
             {
                 MessageBox.Show("Успешно!");
                 this.Hide();

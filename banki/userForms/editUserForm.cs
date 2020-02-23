@@ -43,7 +43,7 @@ namespace banki.userForms
                 pass = user.pass;
             if (fioFie.Text == "")
                 fio = user.fio_user;
-            if(db.init().exec("UPDATE `users` SET `fio` = @fio, `login` = @login, `pass` = @pass, `datebirth` = @date, `role` =  @role WHERE `users`.`id_user` = @id_user;", new List<parami> { new parami("@fio",fio), new parami("@login",login), new parami("@pass",pass), new parami("@date", Convert.ToDateTime(dateFie.Text).ToString("yyyy-MM-dd")), new parami("@role",role), new parami("@id_user", user.id_user), }))
+            if(user.editUser(fio, login, pass, dateFie.Value, (dbUsers.roles)role))
             {
                 MessageBox.Show("Успешно!");
                 DialogResult = DialogResult.Yes;

@@ -47,7 +47,7 @@ namespace banki
             {
                 DataTable table;
                 int id_u = ((dbUsers)gridUsers.SelectedRows[0].Tag).id_user;
-                if (db.init().select("SELECT * FROM  `users` ,  `vkladi` ,  `vkladi_have` WHERE  `vkladi`.`depId` =  `vkladi_have`.`depositid` AND  `vkladi`.`userId` =  `users`.`id_user` AND `vkladi`.`userId` = @id", new List<parami> { new parami("@id", id_u) }, out table))
+                if (dbUsers.selectUserById(id_u, out table))
                 {
                     if (!error.checkTable(table))
                         return;
@@ -56,7 +56,8 @@ namespace banki
                         MessageBox.Show("Удаление невозможно! У пользователя есть записи о вкладах.");
                         return;
                     }
-                    if(db.init().exec("DELETE FROM `users` WHERE `users`.`id_user` = @id;", new List<parami> { new parami("@id", id_u) }))
+                    dbUsers user = (dbUsers)gridUsers.SelectedRows[0].Tag;
+                    if (user.deleteUser())
                     {
                         MessageBox.Show("Успешно!");
                         uprUserForm form = new uprUserForm();

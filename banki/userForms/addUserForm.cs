@@ -27,7 +27,7 @@ namespace banki.userForms
                 MessageBox.Show("Заполните все поля!");
                 return;
             }
-            if (db.init().exec("INSERT INTO `users` (`fio`, `login`, `pass`, `datebirth`, `role`) VALUES ( @fio, @login, @pass, @date, @role);", new List<parami> { new parami("@fio", fioFie.Text), new parami("@login", loginFie.Text), new parami("@pass", passFie.Text), new parami("@date", (Convert.ToDateTime(dateFie.Text)).ToString("yyyy-MM-dd")), new parami("@role", combo_role.SelectedIndex) }))
+            if(dbUsers.addUser(fioFie.Text, loginFie.Text, passFie.Text, dateFie.Value, (dbUsers.roles)combo_role.SelectedIndex))
             {
                 MessageBox.Show("Успешно!");
                 this.DialogResult = DialogResult.Yes;

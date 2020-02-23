@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Фев 23 2020 г., 22:20
+-- Время создания: Фев 24 2020 г., 01:41
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `datebirth` date NOT NULL,
   `role` tinyint(45) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Дамп данных таблицы `users`
@@ -63,24 +63,27 @@ CREATE TABLE IF NOT EXISTS `vkladi` (
   `userId` int(11) NOT NULL,
   `vklad_sum` double NOT NULL,
   `date_vlozh` date NOT NULL,
+  `vidan` tinyint(4) NOT NULL,
   PRIMARY KEY (`vklad_id`),
   KEY `depId` (`depId`),
   KEY `userId` (`userId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- Дамп данных таблицы `vkladi`
 --
 
-INSERT INTO `vkladi` (`vklad_id`, `depId`, `userId`, `vklad_sum`, `date_vlozh`) VALUES
-(1, 1, 2, 100000, '2003-11-02'),
-(2, 2, 2, 59234, '2003-11-02'),
-(3, 1, 3, 500, '2003-11-02'),
-(5, 1, 3, 30000, '2003-11-02'),
-(6, 2, 3, 10000, '2003-11-02'),
-(11, 4, 4, 123, '2020-02-22'),
-(12, 2, 1, 123, '2020-02-22'),
-(13, 1, 10, 1541242, '2020-02-23');
+INSERT INTO `vkladi` (`vklad_id`, `depId`, `userId`, `vklad_sum`, `date_vlozh`, `vidan`) VALUES
+(1, 1, 2, 100000, '2003-11-02', 1),
+(2, 2, 2, 59234, '2003-11-02', 1),
+(3, 1, 3, 500, '2003-11-02', 1),
+(5, 1, 3, 30000, '2003-11-02', 1),
+(6, 2, 3, 10000, '2003-11-02', 1),
+(11, 4, 4, 123, '2020-02-22', 0),
+(12, 2, 1, 123, '2020-02-22', 0),
+(13, 1, 10, 1541242, '2020-02-23', 0),
+(14, 1, 2, 123, '2020-02-24', 0),
+(15, 2, 2, 123123, '2020-02-24', 0);
 
 -- --------------------------------------------------------
 

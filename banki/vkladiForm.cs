@@ -66,13 +66,22 @@ namespace banki
 
         private void but_vidan_Click(object sender, EventArgs e)
         {
+
+
             if (grid_vkladi.SelectedRows.Count < 1)
             {
                 MessageBox.Show("Выберите строчку!");
                 return;
             }
             dbVkladi vkladi = (dbVkladi)grid_vkladi.SelectedRows[0].Tag;
-            if(db.init().exec("UPDATE  `vkladi` SET  `vidan` =  '1' WHERE  `vkladi`.`vklad_id` = @vklad_id;", new List<parami> { new parami("@vklad_id", vkladi.vklad_id) }))
+            if (vkladi.date_vlozh.AddDays(vkladi.vklHave.depTime) > DateTime.UtcNow)
+            {
+                MessageBox.Show("Нельзя пометить вклад выданым, если его срок ещё не кончился!");
+                return;
+            }
+
+
+            if(vkladi.setVkladVidan())
             {
                 MessageBox.Show("Вы пометили, что вклад выдан!");
                 reloadGrid();

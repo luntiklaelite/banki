@@ -26,6 +26,20 @@ namespace banki
             vidan = Convert.ToInt32(row["vidan"]);
         }
 
+        public static bool addVklad(int vkl_id, int user_id, double summ)
+        {
+            if (db.init().exec("INSERT INTO `vkladi` (`depId`, `userId`, `vklad_sum`, `date_vlozh`) VALUES (@depId, @userId, @vklad_sum, @date);", new List<parami> { new parami("@depId", vkl_id), new parami("@userId", user_id), new parami("@vklad_sum", summ), new parami("@date", DateTime.Now.ToString("yyyy-MM-dd")) }))
+                return true;
+            return false;
+        }
+        
+        public bool setVkladVidan()
+        {
+            if (db.init().exec("UPDATE  `vkladi` SET  `vidan` =  '1' WHERE  `vkladi`.`vklad_id` = @vklad_id;", new List<parami> { new parami("@vklad_id", vklad_id) }))
+                return true;
+            return false;
+        }
+
         public static List<dbVkladi> select(string filter)
         {
             DataTable table = new DataTable();
