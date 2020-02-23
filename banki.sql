@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Фев 23 2020 г., 02:04
+-- Время создания: Фев 23 2020 г., 22:20
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `datebirth` date NOT NULL,
   `role` tinyint(45) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Дамп данных таблицы `users`
@@ -48,8 +48,8 @@ INSERT INTO `users` (`id_user`, `fio`, `login`, `pass`, `datebirth`, `role`) VAL
 (6, 'Горыныч Иван Палыч', 'gorynych', 'simsim', '2005-01-01', 0),
 (7, 'Тётка Аднуб Валерьевич', 'adnub', '123123', '2001-01-22', 0),
 (8, 'Дикарев Александр Сергеевич', 'dikarev123', 'pass123', '1999-02-18', 0),
-(9, 'Сухарев Александр Васильевич', 'sashasuhar', 'pass123', '2000-01-23', 1),
-(10, 'Бабариха Луиза Степановна', 'luiza', '123123', '2002-04-18', 2);
+(10, 'Бабариха Луиза Степановна', 'luiza', '123123', '2002-04-18', 2),
+(12, 'Самосвал Валерий Дмитриевич', 'samosval', 'pass123', '2003-02-03', 0);
 
 -- --------------------------------------------------------
 

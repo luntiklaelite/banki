@@ -27,9 +27,45 @@ namespace banki
         {
             if (gridUsers.SelectedRows.Count < 1)
                 return;
+
+            if(((dbUsers)gridUsers.SelectedRows[0].Tag).role_user == (int)dbUsers.roles.admin)
+            {
+                MessageBox.Show("Невозможно удалить администратора!");
+                return;
+            }
+
+            if (((dbUsers)gridUsers.SelectedRows[0].Tag).id_user == dbUsers.localuser.id_user)
+            {
+                MessageBox.Show("Невозможно удалить самого себя!");
+                return;
+            }
+
             var box = MessageBox.Show("Вы уверены, что хотите удалить этого пользователя ? ", "Удаление пользователя", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (box == DialogResult.No)
                 return;
+            else if(box == DialogResult.Yes)
+            {
+                DataTable table;
+                int id_u = ((dbUsers)gridUsers.SelectedRows[0].Tag).id_user;
+                if (db.init().select("SELECT * FROM  `users` ,  `vkladi` ,  `vkladi_have` WHERE  `vkladi`.`depId` =  `vkladi_have`.`depositid` AND  `vkladi`.`userId` =  `users`.`id_user` AND `vkladi`.`userId` = @id", new List<parami> { new parami("@id", id_u) }, out table))
+                {
+                    if (!error.checkTable(table))
+                        return;
+                    if (table.Rows.Count >= 1)
+                    {
+                        MessageBox.Show("Удаление невозможно! У пользователя есть записи о вкладах.");
+                        return;
+                    }
+                    if(db.init().exec("DELETE FROM `users` WHERE `users`.`id_user` = @id;", new List<parami> { new parami("@id", id_u) }))
+                    {
+                        MessageBox.Show("Успешно!");
+                        uprUserForm form = new uprUserForm();
+                        form.Show();
+                        this.Hide();
+                        return;
+                    }
+                }
+            }
 
         }
 

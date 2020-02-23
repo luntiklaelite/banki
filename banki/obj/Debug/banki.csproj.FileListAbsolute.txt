@@ -20,3 +20,4 @@ C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.vkladiForm.resou
 C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.uprUserForm.resources
 C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.userForms.addUserForm.resources
 C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.userForms.editUserForm.resources
+C:\Users\LUNTIKLAELITE\source\repos\banki\banki\obj\Debug\banki.csprojAssemblyReference.cache
