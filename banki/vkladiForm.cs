@@ -20,6 +20,7 @@ namespace banki
             {
                 poiskFie.Visible = false;
                 but_poisk.Visible = false;
+                but_vidan.Visible = false;
             }
         }
 
