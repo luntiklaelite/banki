@@ -27,7 +27,7 @@ namespace banki
 
         public db()
         {
-            string connStr = "Server=localhost;User ID=luntiklaelite;password=123456789;database=banki;CharSet=utf8";
+            string connStr = "Server=localhos2t;User ID=luntiklaelite;password=123456789;database=banki;CharSet=utf8";
             conn = new MySqlConnection(connStr);
 
             try
@@ -69,20 +69,30 @@ namespace banki
         public bool select(string sql, List<parami> list, out DataTable table)
         {
             MySqlCommand command = genCommand(sql, list);
-            using (MySqlDataReader reader = command.ExecuteReader())
+            try
             {
-                table = new DataTable();
-                try
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    table.Load(reader);
+                    table = new DataTable();
+                    try
+                    {
+                        table.Load(reader);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ошибка с загрузкой данных в таблицу");
+                        return false;
+                    }
+                    return true;
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка с загрузкой данных в таблицу");
-                    return false;
-                }
-                return true;
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка с загрузкой данных в таблицу!");
+                table = null;
+                return false;
+            }
+            
         }
 
         public MySqlConnection getConnection()

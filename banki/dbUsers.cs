@@ -64,17 +64,20 @@ namespace banki
 
         public static bool autorization(string login, string pass)
         {
-            DataTable table = new DataTable();
-            db.init().select("SELECT * FROM `users` WHERE BINARY `login` = @login AND BINARY `pass` = @pass;", new List<parami> { new parami("@login", login), new parami("@pass", pass) }, out table);
-            if (!error.checkTable(table))
-                return false;
-            if (table.Rows.Count < 1)
+            DataTable table;
+            if (db.init().select("SELECT * FROM `users` WHERE BINARY `login` = @login AND BINARY `pass` = @pass;", new List<parami> { new parami("@login", login), new parami("@pass", pass) }, out table))
             {
-                MessageBox.Show("Неправильный логин или пароль!");
-                return false;
+                if (!error.checkTable(table))
+                    return false;
+                if (table.Rows.Count < 1)
+                {
+                    MessageBox.Show("Неправильный логин или пароль!");
+                    return false;
+                }
+                localuser = new dbUsers(table.Rows[0]);
+                return true;
             }
-            localuser = new dbUsers(table.Rows[0]);
-            return true;
+            return false;
         }
 
         public static string getRoleUser(dbUsers user1)
@@ -98,7 +101,7 @@ namespace banki
         public static List<dbUsers> select(string filter)
         {
             List<dbUsers> list = new List<dbUsers>();
-            DataTable table = new DataTable();
+            DataTable table;
             if (filter == "")
             {
                 if (db.init().select("SELECT * FROM `users`", new List<parami>(), out table))
